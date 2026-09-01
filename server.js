@@ -1,6 +1,6 @@
 // server.js
 const express = require("express");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt.js");
 const crypto = require("crypto");
 const Redis = require("ioredis");
 const Database = require("better-sqlite3");
@@ -90,8 +90,8 @@ app.post("/auth/heartbeat", async (req, res) => {
   res.status(401).json({ message: "Session expired" });
 });
 
-app.use(async (req, res) => {
+app.get(async (req, res) => {
   res.status(200).send("Server is up!")
 });
 
-app.listen(3000, () => console.log("Express Auth Server running on port 3000"));
+app.listen(80, () => console.log("Express Auth Server running on port 3000"));
