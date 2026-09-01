@@ -69,10 +69,10 @@ app.post("/auth/login", async (req, res) => {
     }
 
     updateIp.run(hashData(cleanIp), user.id);
-    await redis.set(`session:${cleanIp}`, user.steamId, "EX", 300);
+    await redis.set(`session:${cleanIp}`, user.steamId, "EX", 60);
 
     res.json({
-      message: "Login successful. You have 5 minutes to join the server.",
+      message: "Login successful. You have 1 minutes to join the server.",
     });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
@@ -84,7 +84,7 @@ app.post("/auth/heartbeat", async (req, res) => {
   const exists = await redis.exists(`session:${cleanIp}`);
 
   if (exists) {
-    await redis.expire(`session:${cleanIp}`, 300);
+    await redis.expire(`session:${cleanIp}`, 60);
     return res.json({ message: "Connection extended" });
   }
   res.status(401).json({ message: "Session expired" });
@@ -94,4 +94,4 @@ app.get(async (req, res) => {
   res.status(200).send("Server is up!")
 });
 
-app.listen(80, () => console.log("Express Auth Server running on port 3000"));
+app.listen(80, () => console.log("Express Auth Server running on port 80"));
