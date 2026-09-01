@@ -7,11 +7,5 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "better-sqlite3": "^13.0.3",
-    "express": "^5.2.1",
-    "ioredis": "^6.0.0"
-  }
+  "description": ""
 }
