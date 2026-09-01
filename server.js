@@ -1,6 +1,6 @@
 // server.js
 const express = require("express");
-const bcrypt = require("bcrypt.js");
+const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const Redis = require("ioredis");
 const Database = require("better-sqlite3");
